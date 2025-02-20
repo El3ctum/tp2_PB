@@ -13,13 +13,11 @@ RUN dnf update -y && dnf install -y \
     python3-pip \
     gcc \
     python3-devel \
+    libgomp \
     && dnf clean all
 
 # Instala as bibliotecas Python necessárias
-RUN pip install --no-cache-dir \
-    numpy \
-    asyncio \
-    multiprocess
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expõe a porta (caso necessário para futuras extensões ou APIs)
 EXPOSE 8000
